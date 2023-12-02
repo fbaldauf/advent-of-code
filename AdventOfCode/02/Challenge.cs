@@ -15,11 +15,8 @@
         public static int ComputeLine(string line)
         {
             var game = new Game(line);
-            if (game.red > MAX_RED || game.green > MAX_GREEN || game.blue > MAX_BLUE)
-            {
-                return 0;
-            }
-            return game.id;
+
+            return game.power;
         }
     }
 
@@ -29,6 +26,7 @@
         public int blue = 0;
         public int green = 0;
         public int red = 0;
+        public int power = 0;
 
         public Game(string def)
         {
@@ -39,6 +37,8 @@
             red = turns.Select(x => x.red).Max();
             green = turns.Select(x => x.green).Max();
             blue = turns.Select(x => x.blue).Max();
+
+            power = red * green * blue;
         }
     }
 
